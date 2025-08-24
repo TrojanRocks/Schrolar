@@ -1,0 +1,9 @@
+[
+  {"id":"ql-1","title":"Pomodoro Technique","content":"Split study time into 25-minute focus blocks.","category":"Quick Learning"},
+  {"id":"ip-1","title":"STAR Method","content":"Answer behavioral questions using Situation, Task, Action, Result.","category":"Interview Prep"},
+  {"id":"qu-1","title":"Keyboard Shortcuts","content":"Learn core IDE shortcuts to speed up coding.","category":"Quick Upskilling"},
+  {"id":"du-1","title":"API Versioning","content":"Use semantic versioning and deprecation policies.","category":"Domain Updates"},
+  {"id":"ep-1","title":"Time Value of Money","content":"Future value FV = PV(1 + r)^n.","category":"Exam Prep"},
+  {"id":"gk-1","title":"HTTP vs HTTPS","content":"HTTPS encrypts traffic using TLS.","category":"General Knowledge"}
+]
+
