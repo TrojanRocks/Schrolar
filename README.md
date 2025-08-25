@@ -6,9 +6,9 @@ Gain info via scrolling — a Flutter app for byte-sized learning through flashc
 Screenshots
 -----------
 
-| Home | Topics | Flashcards |
-|------|--------|------------|
-| ![Home](docs/screenshots/home.png) | ![Topics](docs/screenshots/topics.png) | ![Flashcards](docs/screenshots/flashcards.png) |
+| Home | Topics | 
+|------|--------|
+| ![Home](docs/screenshots/home.png) | ![Topics](docs/screenshots/topics.png) | 
 
 Features
 --------
