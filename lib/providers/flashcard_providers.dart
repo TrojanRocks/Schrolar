@@ -20,4 +20,11 @@ final flashcardsProvider = FutureProvider<List<Flashcard>>((ref) async {
   return service.loadByInterests(interests);
 });
 
+final streakProvider = FutureProvider<int>((ref) async {
+  final userId = await ref.watch(authUserIdProvider.future);
+  if (userId == null) return 0;
+  final prefs = ref.watch(preferencesServiceProvider);
+  return prefs.getCurrentStreak(userId);
+});
+
 

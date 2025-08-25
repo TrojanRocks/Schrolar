@@ -102,6 +102,20 @@ class PreferencesService {
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
+
+  Future<int> getCurrentStreak(String userId) async {
+    final db = await _getDb();
+    int streak = 0;
+    DateTime day = DateTime.now();
+    while (true) {
+      final key = '${day.year}-${day.month.toString().padLeft(2, '0')}-${day.day.toString().padLeft(2, '0')}';
+      final rows = await db.query('progress', where: 'user_id = ? AND date = ?', whereArgs: [userId, key]);
+      if (rows.isEmpty) break;
+      streak += 1;
+      day = day.subtract(const Duration(days: 1));
+    }
+    return streak;
+  }
 }
 
 

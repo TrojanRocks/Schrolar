@@ -7,7 +7,7 @@ class FlashcardService {
   Future<List<Flashcard>> loadAll() async {
     final data = await rootBundle.loadString('assets/data/flashcards.json');
     final list = json.decode(data) as List<dynamic>;
-    return list.map((e) => Flashcard.fromJson(e as Map<String, dynamic>)).toList();
+    return list.map((e) => Flashcard.fromMap(e as Map<String, dynamic>)).toList();
   }
 
   Future<List<Flashcard>> loadByInterests(List<String> interests) async {

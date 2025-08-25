@@ -4,6 +4,13 @@
   {"id":"qu-1","title":"Keyboard Shortcuts","content":"Learn core IDE shortcuts to speed up coding.","category":"Quick Upskilling"},
   {"id":"du-1","title":"API Versioning","content":"Use semantic versioning and deprecation policies.","category":"Domain Updates"},
   {"id":"ep-1","title":"Time Value of Money","content":"Future value FV = PV(1 + r)^n.","category":"Exam Prep"},
-  {"id":"gk-1","title":"HTTP vs HTTPS","content":"HTTPS encrypts traffic using TLS.","category":"General Knowledge"}
+  {"id":"gk-1","title":"HTTP vs HTTPS","content":"HTTPS encrypts traffic using TLS.","category":"General Knowledge"},
+
+  {"id":"radio-1","groupId":"RADIO","orderInGroup":1,"title":"RADIO Overview","content":"RADIO for FE SDI: Requirements, Architecture, Data, Interface, Optimizations.","category":"Interview Prep"},
+  {"id":"radio-2","groupId":"RADIO","orderInGroup":2,"title":"Requirements","content":"Clarify scope, users, use-cases, constraints, SLA, non-functional.","category":"Interview Prep"},
+  {"id":"radio-3","groupId":"RADIO","orderInGroup":3,"title":"Architecture","content":"Identify client, state, network, backend, caching, CDN, observability.","category":"Interview Prep"},
+  {"id":"radio-4","groupId":"RADIO","orderInGroup":4,"title":"Data Model","content":"Define entities and fields; map ownership to components; persistence strategy.","category":"Interview Prep"},
+  {"id":"radio-5","groupId":"RADIO","orderInGroup":5,"title":"Interfaces (API)","content":"List APIs between modules; method, params, responses, errors, contracts.","category":"Interview Prep"},
+  {"id":"radio-6","groupId":"RADIO","orderInGroup":6,"title":"Optimizations & Deep Dives","content":"Perf budgets, lazy load, virtualization, memoization, prefetch, a11y.","category":"Interview Prep"}
 ]
 

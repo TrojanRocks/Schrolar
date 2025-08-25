@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/auth_providers.dart';
 import '../services/preferences_service.dart';
+import '../providers/persona_providers.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -21,6 +22,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   ];
   final Set<String> _selected = {};
   bool _loaded = false;
+  UserPersona _persona = UserPersona.student;
+  ThemeMode _mode = ThemeMode.system;
 
   @override
   void initState() {
@@ -32,9 +35,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final userId = await ref.read(authUserIdProvider.future);
     if (userId == null) return;
     final interests = await PreferencesService().getInterests(userId);
+    final personaState = ref.read(personaControllerProvider);
     setState(() {
       _selected.addAll(interests);
       _loaded = true;
+      _persona = personaState.persona;
+      _mode = personaState.themeMode;
     });
   }
 
@@ -82,6 +88,37 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                         },
                       )
                   ],
+                ),
+                const SizedBox(height: 24),
+                Text('Persona', style: Theme.of(context).textTheme.titleLarge),
+                const SizedBox(height: 12),
+                SegmentedButton<UserPersona>(
+                  segments: const [
+                    ButtonSegment(value: UserPersona.student, label: Text('Student'), icon: Icon(Icons.school_outlined)),
+                    ButtonSegment(value: UserPersona.professional, label: Text('Professional'), icon: Icon(Icons.work_outline)),
+                  ],
+                  selected: {_persona},
+                  onSelectionChanged: (s) async {
+                    final next = s.first;
+                    setState(() => _persona = next);
+                    await ref.read(personaControllerProvider.notifier).setPersona(next);
+                  },
+                ),
+                const SizedBox(height: 24),
+                Text('Theme Mode', style: Theme.of(context).textTheme.titleLarge),
+                const SizedBox(height: 12),
+                SegmentedButton<ThemeMode>(
+                  segments: const [
+                    ButtonSegment(value: ThemeMode.system, label: Text('System'), icon: Icon(Icons.brightness_auto)),
+                    ButtonSegment(value: ThemeMode.light, label: Text('Light'), icon: Icon(Icons.light_mode_outlined)),
+                    ButtonSegment(value: ThemeMode.dark, label: Text('Dark'), icon: Icon(Icons.dark_mode_outlined)),
+                  ],
+                  selected: {_mode},
+                  onSelectionChanged: (s) async {
+                    final next = s.first;
+                    setState(() => _mode = next);
+                    await ref.read(personaControllerProvider.notifier).setThemeMode(next);
+                  },
                 ),
                 const SizedBox(height: 16),
                 FilledButton(onPressed: _save, child: const Text('Save')),

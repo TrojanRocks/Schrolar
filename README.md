@@ -1,3 +1,47 @@
+Schrolar
+========
+
+Gain info via scrolling — a Flutter app for byte-sized learning through flashcards.
+
+Screenshots
+-----------
+
+| Home | Topics | Flashcards |
+|------|--------|------------|
+| ![Home](docs/screenshots/home.png) | ![Topics](docs/screenshots/topics.png) | ![Flashcards](docs/screenshots/flashcards.png) |
+
+Features
+--------
+- Firebase Auth (email/password + Google) with mock fallback
+- Student/Professional personas with light/dark themes (Material 3 + Inter)
+- Home landing with stories, Quick Bites, Featured bites, QOTD, paths
+- Vertically scrollable grouped flashcards (e.g., RADIO)
+- Bookmarks, streaks, and preferences (SQLite + SharedPreferences)
+- Topics grid and topic flashcards with flip/swipe and resume
+
+Run
+---
+```bash
+flutter pub get
+flutter run
+```
+
+Theming
+-------
+Use Settings → Persona & Theme Mode to switch Student/Professional and light/dark. Themes are defined in `lib/theme/app_theme.dart`.
+
+Structure
+---------
+- `lib/screens` — UI screens (home, flashcards, profile, settings, topics)
+- `lib/widgets` — reusable components
+- `lib/providers` — Riverpod state
+- `lib/services` — auth, preferences, topic progress
+- `lib/data/mock_data.dart` — demo data
+
+License
+-------
+MIT
+
 # schrolar
 
 A new Flutter project.

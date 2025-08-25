@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/auth_providers.dart';
+import '../providers/flashcard_providers.dart';
 
 class SplashScreen extends ConsumerWidget {
   const SplashScreen({super.key});
@@ -17,10 +18,16 @@ class SplashScreen extends ConsumerWidget {
           }
         });
       } else {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (context.mounted) {
-            Navigator.of(context).pushReplacementNamed('/home');
-          }
+        // If interests are empty, go to onboarding first
+        ref.read(interestsProvider.future).then((interests) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (!context.mounted) return;
+            if (interests.isEmpty) {
+              Navigator.of(context).pushReplacementNamed('/onboarding');
+            } else {
+              Navigator.of(context).pushReplacementNamed('/home');
+            }
+          });
         });
       }
     });

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import '../models/flashcard.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../providers/preferences_providers.dart';
 
-class FlashcardCard extends StatelessWidget {
+class FlashcardCard extends ConsumerWidget {
   final Flashcard flashcard;
   final VoidCallback? onFavorite;
   const FlashcardCard({super.key, required this.flashcard, this.onFavorite});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final favorites = ref.watch(favoritesControllerProvider);
+    final isBookmarked = favorites.contains(flashcard.id);
     return Card(
       elevation: 1,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -26,8 +30,12 @@ class FlashcardCard extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.bookmark_add_outlined),
-                  onPressed: onFavorite,
+                  tooltip: isBookmarked ? 'Remove bookmark' : 'Add bookmark',
+                  icon: Icon(isBookmarked ? Icons.bookmark : Icons.bookmark_border),
+                  onPressed: () async {
+                    await ref.read(favoritesControllerProvider.notifier).toggle(flashcard.id);
+                    onFavorite?.call();
+                  },
                 )
               ],
             ),
