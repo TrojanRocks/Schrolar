@@ -10,6 +10,10 @@ Screenshots
 |------|--------|
 | ![Home](docs/screenshots/home.png) | ![Topics](docs/screenshots/topics.png) | 
 
+
+https://github.com/user-attachments/assets/65ca4f74-955f-4a07-b88f-ad4434e49dca
+
+
 Features
 --------
 - Firebase Auth (email/password + Google) with mock fallback
